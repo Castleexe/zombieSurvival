@@ -9,6 +9,9 @@ public class Score : MonoBehaviour
     public Text CoinText;
     public static int score = 0;
 
+    bool devMode;
+    public int giveCoinsAmount = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,11 @@ public class Score : MonoBehaviour
     void Update()
     {
         addCoins();
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Coin.Coins += giveCoinsAmount;
+        }
     }
 
     public void addScore()
@@ -31,4 +39,5 @@ public class Score : MonoBehaviour
     {
         CoinText.text = Coin.Coins.ToString();
     }
+
 }

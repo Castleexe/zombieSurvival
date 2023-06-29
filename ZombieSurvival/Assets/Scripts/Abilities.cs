@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 /* 
 Ability ideas:
@@ -14,9 +16,18 @@ public class Abilities : MonoBehaviour
 {
     public Shooting shooting;
 
+    public TextMeshProUGUI fireRatePriceText;
+    public Image FireRateStar1;
+    public Image FireRateStar2;
+    public Image FireRateStar3;
 
     int fireRateLevel = 0;
     int fireRateUpgradeCost = 10;
+
+    private void Start()
+    {
+        fireRatePriceText.text = fireRateUpgradeCost.ToString();
+    }
 
 
     private void Update()
@@ -25,11 +36,6 @@ public class Abilities : MonoBehaviour
         {
             heal();
         }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            addFireRate();
-        }
-
     }
 
 
@@ -44,12 +50,28 @@ public class Abilities : MonoBehaviour
 
     public void addFireRate()
     {
-        if (fireRateLevel < 3 && Coin.Coins > fireRateUpgradeCost)
+        if (fireRateLevel < 3 && Coin.Coins >= fireRateUpgradeCost)
         {
             shooting.coolTime -= 0.1f;
             Coin.Coins -= fireRateUpgradeCost;
             fireRateUpgradeCost = fireRateUpgradeCost * 2;
+            fireRatePriceText.text = fireRateUpgradeCost.ToString();
+            fireRateLevel++;
         }
+        if (fireRateLevel == 1)
+        {
+            FireRateStar1.color = Color.white;
+        }
+        if(fireRateLevel == 2)
+        {
+            FireRateStar2.color = Color.white;
+        }
+        if (fireRateLevel == 3)
+        { 
+            FireRateStar3.color = Color.white;
+            fireRatePriceText.text = "MAX";
+        }
+
     }
 
 }

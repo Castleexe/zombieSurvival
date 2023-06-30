@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontal;
     float vertical;
-    [SerializeField] float speed = 6.9f;
+    public float speed = 6.9f;
 
     // Start is called before the first frame update
     void Start()

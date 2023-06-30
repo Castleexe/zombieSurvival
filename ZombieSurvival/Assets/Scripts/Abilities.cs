@@ -15,14 +15,23 @@ Ability ideas:
 public class Abilities : MonoBehaviour
 {
     public Shooting shooting;
+    public PlayerMovement playerMovement;
 
     public TextMeshProUGUI fireRatePriceText;
     public Image FireRateStar1;
     public Image FireRateStar2;
     public Image FireRateStar3;
 
+    public TextMeshProUGUI moveSpeedPriceText;
+    public Image MoveSpeedStar1;
+    public Image MoveSpeedStar2;
+    public Image MoveSpeedStar3;
+
     int fireRateLevel = 0;
     int fireRateUpgradeCost = 10;
+
+    int moveSpeedLevel = 0;
+    int moveSpeedUpgradeCost = 10;
 
     private void Start()
     {
@@ -71,7 +80,30 @@ public class Abilities : MonoBehaviour
             FireRateStar3.color = Color.white;
             fireRatePriceText.text = "MAX";
         }
-
     }
 
+    public void addMoveSpeed()
+    {
+        if (moveSpeedLevel < 3 && Coin.Coins >= moveSpeedUpgradeCost)
+        {
+            playerMovement.speed += 1f;
+            Coin.Coins -= moveSpeedUpgradeCost;
+            moveSpeedUpgradeCost *= 2;
+            moveSpeedPriceText.text = moveSpeedUpgradeCost.ToString();
+            moveSpeedLevel++;
+        }
+        if (moveSpeedLevel == 1)
+        {
+            MoveSpeedStar1.color = Color.white;
+        }
+        if (moveSpeedLevel == 2)
+        {
+            MoveSpeedStar2.color = Color.white;
+        }
+        if (moveSpeedLevel == 3)
+        {
+            FireRateStar3.color = Color.white;
+            moveSpeedPriceText.text = "MAX";
+        }
+    }
 }

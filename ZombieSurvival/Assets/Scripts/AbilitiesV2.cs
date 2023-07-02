@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using Unity.VisualScripting;
 
 public class Shop : MonoBehaviour
 {
@@ -42,7 +40,7 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        shopUI.enabled = false;
+        //shopUI.enabled = false;
         setUI();
     }
 
@@ -97,11 +95,25 @@ public class Shop : MonoBehaviour
         playerMovement.speed += 1f;
     }
 
+    public void heal()
+    {
+        if (PlayerHealth.currentHealth < 100 && Coin.Coins > 4)
+        {
+            PlayerHealth.currentHealth += 5;
+            Coin.Coins -= 5;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
             ShowShop();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            heal();
         }
     }
 

@@ -35,7 +35,10 @@ public class Gun : MonoBehaviour
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition); 
 
-        gunLook();
+        if(PauseMenu.GameIsPaused == false )
+        {
+            gunLook();
+        }
 
     }
 

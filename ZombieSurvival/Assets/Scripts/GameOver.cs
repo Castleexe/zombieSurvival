@@ -23,6 +23,7 @@ public class GameOver : MonoBehaviour
     public void Restart()
     {
         Score.score = 0;
+        Coin.Coins = 0;
         SceneManager.LoadScene("Main");
     }
 

@@ -22,7 +22,7 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && PauseMenu.GameIsPaused == false)
         {
             Shoot();
         }

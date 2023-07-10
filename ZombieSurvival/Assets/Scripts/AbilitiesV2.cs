@@ -20,6 +20,7 @@ public class Shop : MonoBehaviour
         public int cost;
         public int level = 0;
 
+
         public TextMeshProUGUI itemNameText;
         public TextMeshProUGUI itemCostText;
         public Image[] stars;
